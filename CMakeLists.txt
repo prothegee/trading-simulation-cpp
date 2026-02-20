@@ -10,7 +10,21 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 option(BUILD_TESTS "build the project tests; default: true" true)
 option(BUILD_SHARED_LIBS "build shared libs; default: false" false)
 
+include(GNUInstallDirs)
+include(CheckLibraryExists)
+include(CheckIncludeFileCXX)
+include(CMakeDependentOption)
+include(GenerateExportHeader)
+include(CMakeDependentOption)
+include(CMakeFindDependencyMacro)
+include(CMakePackageConfigHelpers)
+include(FindPackageHandleStandardArgs)
+
 include(scripts/cmake/init.cmake)
+include(scripts/cmake/configure.cmake)
+
+include(inc/tradesim-headers.cmake)
+include(src/tradesim-sources.cmake)
 
 link_directories(BEFORE     ${CMAKE_SOURCE_DIR}/inc)
 include_directories(BEFORE  ${CMAKE_SOURCE_DIR}/inc)
