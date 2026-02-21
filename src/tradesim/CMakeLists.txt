@@ -2,12 +2,10 @@ cmake_minimum_required(VERSION 3.25)
 
 project(tradesim)
 
-# include(${CMAKE_SOURCE_DIR}/scripts/cmake/configure.cmake)
-
 if(BUILD_SHARED_LIBS)
-    add_library(${PROJECT_NAME} SHARED ${TRADESIM_SOURCE_FILES})
+    add_library(${PROJECT_NAME} SHARED lib.cc)
 else()
-    add_library(${PROJECT_NAME} ${TRADESIM_SOURCE_FILES})
+    add_library(${PROJECT_NAME} lib.cc)
 endif()
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
@@ -72,6 +70,10 @@ generate_export_header(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME}
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>/inc
+)
+target_sources(${PROJECT_NAME}
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 # check
