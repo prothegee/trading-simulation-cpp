@@ -23,15 +23,16 @@ include(FindPackageHandleStandardArgs)
 include(scripts/cmake/init.cmake)
 include(scripts/cmake/configure.cmake)
 
-include(inc/tradesim-headers.cmake)
-include(src/tradesim-sources.cmake)
+include(scripts/cmake/headers-tradesim.cmake)
+include(scripts/cmake/sources-tradesim.cmake)
 
 link_directories(BEFORE     ${CMAKE_SOURCE_DIR}/inc)
 include_directories(BEFORE  ${CMAKE_SOURCE_DIR}/inc)
 
 add_subdirectory(src/tradesim)
 add_subdirectory(src/tradesim-engine)
-add_subdirectory(src/tradesim-consumer)
+add_subdirectory(src/tradesim-engine-request)
+add_subdirectory(src/tradesim-engine-socket)
 add_subdirectory(src/tradesim-producer)
 add_subdirectory(src/tradesim-simulate)
 
